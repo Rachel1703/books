@@ -1,0 +1,57 @@
+.container-fluid{
+  margin:0;
+  padding:0;
+  background-color: rgb(7, 15, 53);
+  
+}
+
+
+nav {
+    font-family: Oxygen mono;
+    font-size: 80%;
+    padding: 1rem;
+    /* background-color: rgb(5, 15, 64); */
+    
+  }
+
+  nav h1 a {
+    font-family: Oxygen, sans-serif;
+    font-size:2rem;
+    color:aqua;
+  }
+
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .gradient{
+    background: rgb(255,23,228);
+  background: linear-gradient(90deg, rgba(255,23,228,1) 0%, rgba(138,243,250,1) 100%);
+  height:2px;
+  }
+  
+  
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+font-size: "Oxygen mono", monospace;
+  }
+
+  nav a:hover {
+    color: #ff17e4;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+ 
+ 

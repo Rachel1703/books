@@ -1,0 +1,26 @@
+h1{
+    color:aqua;
+font-family:Oxygen, sans-serif ;
+
+}
+
+form label{
+    font-style: Oxygen mono;
+    color:white;
+    font-weight: 400;
+}
+
+.form-group{
+    margin-top:5px;
+}
+
+button {
+    background-color: rgb(255,23,228);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-family: Oxygen mono;
+    text-decoration: none;
+  }
+  
+ 
