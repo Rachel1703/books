@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudService } from 'src/app/service/crud.service';
 
@@ -10,17 +10,18 @@ import { CrudService } from 'src/app/service/crud.service';
 })
 export class AddBookComponent implements OnInit {
 bookForm:FormGroup;
+submitted:boolean = false;
   constructor(private formBuilder : FormBuilder,
     private router : Router,
     private ngZone : NgZone,
     private crudAPI : CrudService
     ) { 
       this.bookForm = this.formBuilder.group({
-        'title':[''],
-        'author':[''],
-        'description':[''],
-        'publicationYear':[''],
-        'ISBN':['']
+        title:['',Validators.required],
+        author:['',Validators.required],
+        description:['', [Validators.required,Validators.minLength(30)]],
+        publicationYear:['',[Validators.required,Validators.minLength(4), Validators.pattern("^[0-9]*$")]],
+        ISBN:['',[Validators.required,Validators.minLength(8)]]
       })
     }
 
@@ -28,8 +29,13 @@ bookForm:FormGroup;
     
   }
 
-  onSubmit():any {
-    this.crudAPI.addBook(this.bookForm.value).subscribe((res:any)=>{
+  onSubmit() {
+    this.submitted = true;
+    if(this.bookForm.invalid){
+      return;
+    }
+
+    this.crudAPI.addBook(this.bookForm.value).subscribe((res)=>{
       console.log("Data Added successfully");
       this.ngZone.run(()=>this.router.navigateByUrl('/listBooks'))
       
@@ -37,6 +43,5 @@ bookForm:FormGroup;
     console.log(err);
     })
   }
-  
 
 }

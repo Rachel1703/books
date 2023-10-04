@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from 'src/app/service/book';
 import { CrudService } from 'src/app/service/crud.service';
 
 @Component({
@@ -8,11 +9,13 @@ import { CrudService } from 'src/app/service/crud.service';
 })
 export class ListBookComponent implements OnInit {
 tabData:any=[];
+filteredList:Book[]=[];
   constructor(private crudapi:CrudService) { }
 
   ngOnInit(): void {
-    this.tabData=this.crudapi.getBooks().subscribe((data)=>{
+    this.crudapi.getBooks().subscribe((data)=>{
       this.tabData = data;
+      this.filteredList = this.tabData;
     });
     console.log(this.tabData);
   }
@@ -27,6 +30,17 @@ tabData:any=[];
       })
     }
 
+  }
+
+  filterResults(text: string) {
+   
+    if (!text) {
+      this.filteredList = this.tabData;
+    }
+
+    this.filteredList = this.tabData.filter(
+      (    ele: { ISBN: string; }) => ele?.ISBN.toUpperCase().includes(text.toUpperCase())
+    );
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/app/service/crud.service';
 
@@ -29,7 +29,7 @@ updateForm!: FormGroup;
         })
       })
       this.updateForm = this.fb.group({
-        title:[''],
+        title:['',Validators.required],
           author:[''],
           description:[''],
           publicationYear : [''],

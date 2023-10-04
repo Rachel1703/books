@@ -23,4 +23,7 @@ button {
     text-decoration: none;
   }
   
- 
+  button:hover{
+    background-color: white;
+    color: rgb(255,23,228);
+}

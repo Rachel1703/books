@@ -1,5 +1,12 @@
 h1{
     color:aqua;
 font-family:Oxygen, sans-serif ;
+margin:0;
+padding : 0;
+text-align: center;
+}
+
+.container{
+    height:100%;
 
 }
